@@ -28,6 +28,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   provider:
+  bloc:
+  flutter_bloc:
   flutter:
     sdk: flutter
 
