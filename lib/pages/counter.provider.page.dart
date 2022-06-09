@@ -8,7 +8,7 @@ class CounterProviderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CounterState counterState = Provider.of<CounterState>(context,listen: false);
-    print("Build .......");
+    print("Build .....");
     return Scaffold(
       appBar: AppBar(title: Text('Counter Provider'),),
       body: Consumer<CounterState>(
