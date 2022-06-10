@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_state_management_app/bloc/counter.cubit.dart';
+import 'package:flutter_state_management_app/bloc_old/counter.cubit.dart';
 import 'package:flutter_state_management_app/provider/counter.state.dart';
 import 'package:provider/provider.dart';
 

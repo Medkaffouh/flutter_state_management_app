@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_state_management_app/bloc/counter.cubit.dart';
-import 'package:flutter_state_management_app/pages/counter.cubit.page.dart';
-import 'package:flutter_state_management_app/pages/counter.provider.page.dart';
-import 'package:flutter_state_management_app/pages/counter.stateful.page.dart';
+import 'package:flutter_state_management_app/bloc_old/counter.cubit.dart';
+import 'package:flutter_state_management_app/pages_old/counter.cubit.page.dart';
+import 'package:flutter_state_management_app/pages_old//counter.provider.page.dart';
+import 'package:flutter_state_management_app/pages_old//counter.stateful.page.dart';
 import 'package:flutter_state_management_app/provider/counter.state.dart';
 import 'package:flutter_state_management_app/ui/pages/home.page.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +30,9 @@ class RoutView extends StatelessWidget {
       ),
       routes: {
         "/":(context) => const HomePage(),
+        "/counter1":(context) => const HomePage(),
+        "/counter2":(context) => const HomePage(),
+        "/users":(context) => const HomePage(),
       },
       initialRoute: "/",
     );
