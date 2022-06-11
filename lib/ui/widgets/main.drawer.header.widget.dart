@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_state_management_app/bloc/theme.bloc.dart';
 class MainDrawerHeader extends StatelessWidget {
   const MainDrawerHeader({Key? key}) : super(key: key);
 
@@ -17,7 +19,9 @@ class MainDrawerHeader extends StatelessWidget {
               radius: 50,
               backgroundImage: AssetImage("images/profile.jpeg"),
             ),
-            IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
+            IconButton(onPressed: (){
+              context.read<ThemeBloc>().add(SwitchThemeEvent());
+            }, icon: const Icon(Icons.settings))
           ],
         ));
   }
