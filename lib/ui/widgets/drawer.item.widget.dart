@@ -17,7 +17,7 @@ class DrawerItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title,style: Theme.of(context).textTheme.headline6,),
+      title: Text(title,style: Theme.of(context).textTheme.headline5,),
       leading: Icon(leadingIcon,color: Theme.of(context).primaryColor,),
       trailing: Icon(trailingIcon,color: Theme.of(context).primaryColor,),
       onTap: ()=>onAction(),
