@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       drawer: const MainDrawer(),
       appBar: AppBar(title: const Text("Home page"),),
       body: Center(
-        child: Text("Adam",style: Theme.of(context).textTheme.headline1,),
+        child: Text("Home Page",style: Theme.of(context).textTheme.headline3,),
       ),
     );
   }

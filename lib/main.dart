@@ -6,6 +6,9 @@ import 'package:flutter_state_management_app/pages_old/counter.cubit.page.dart';
 import 'package:flutter_state_management_app/pages_old//counter.provider.page.dart';
 import 'package:flutter_state_management_app/pages_old//counter.stateful.page.dart';
 import 'package:flutter_state_management_app/provider/counter.state.dart';
+import 'package:flutter_state_management_app/ui/pages/counter.bloc.page.dart';
+import 'package:flutter_state_management_app/ui/pages/counter.statful.page.dart';
+import 'package:flutter_state_management_app/ui/pages/git.users.page.dart';
 import 'package:flutter_state_management_app/ui/pages/home.page.dart';
 import 'package:provider/provider.dart';
 void main() => runApp(const MyApp());
@@ -25,14 +28,15 @@ class RoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal
       ),
       routes: {
         "/":(context) => const HomePage(),
-        "/counter1":(context) => const HomePage(),
-        "/counter2":(context) => const HomePage(),
-        "/users":(context) => const HomePage(),
+        "/counter1":(context) => const CounterStatefulPage(),
+        "/counter2":(context) => const CounterBlocPage(),
+        "/users":(context) => const GitUsersPage(),
       },
       initialRoute: "/",
     );
