@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_management_app/bloc/counter.bloc.dart';
+import 'package:flutter_state_management_app/ui/themes/thems.dart';
 
 import '../widgets/main.drawer.widget.dart';
 
@@ -28,9 +29,8 @@ class CounterBlocPage extends StatelessWidget {
                   ),
                   Text(
                     state.errorMessage,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: CustomThemes.errorTextStyle,
                   )
-
                 ],
               );
             } else {
