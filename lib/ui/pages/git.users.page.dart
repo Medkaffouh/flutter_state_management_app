@@ -62,8 +62,19 @@ class GitUsersPage extends StatelessWidget {
                     child: ListView.separated(
                         itemBuilder: (context,index)=>ListTile(
                           title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(state.listUsers.items[index].login)
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius:35,
+                                    backgroundImage: NetworkImage(state.listUsers.items[index].avatarUrl),
+                                  ),
+                                  const SizedBox(width: 10,),
+                                  Text(state.listUsers.items[index].login, style: Theme.of(context).textTheme.headline6,),
+                                ],
+                              ),
+                              CircleAvatar(child: Text("${state.listUsers.items[index].score}"),)
                             ],
                           ),
                         ),
