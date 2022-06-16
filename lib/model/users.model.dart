@@ -7,12 +7,12 @@ class ListUsers {
   });
   late final int totalCount;
   late final bool incompleteResults;
-  late final List<Items> items;
+  late final List<User> items;
 
   ListUsers.fromJson(Map<String, dynamic> json){
     totalCount = json['total_count'];
     incompleteResults = json['incomplete_results'];
-    items = List.from(json['items']).map((e)=>Items.fromJson(e)).toList();
+    items = List.from(json['items']).map((e)=>User.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -24,8 +24,8 @@ class ListUsers {
   }
 }
 
-class Items {
-  Items({
+class User {
+  User({
     required this.login,
     required this.id,
     required this.nodeId,
@@ -66,7 +66,7 @@ class Items {
   late final bool siteAdmin;
   late final int score;
 
-  Items.fromJson(Map<String, dynamic> json){
+  User.fromJson(Map<String, dynamic> json){
     login = json['login'];
     id = json['id'];
     nodeId = json['node_id'];
