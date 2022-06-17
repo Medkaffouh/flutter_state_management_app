@@ -5,13 +5,22 @@ class CustomThemes {
   );
   static List<ThemeData> themes=[
     ThemeData(
-        primarySwatch: Colors.teal
+        primarySwatch: Colors.teal,
+        iconTheme: const IconThemeData(
+          color: Colors.teal
+        )
     ),
     ThemeData(
-        primarySwatch: Colors.deepOrange
+        primarySwatch: Colors.deepOrange,
+        iconTheme: const IconThemeData(
+            color: Colors.deepOrange
+        )
     ),
     ThemeData(
-        primarySwatch: Colors.blue
+        primarySwatch: Colors.blue,
+        iconTheme: const IconThemeData(
+            color: Colors.blue
+        )
     ),
   ];
 }
