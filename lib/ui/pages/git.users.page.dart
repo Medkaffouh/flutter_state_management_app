@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_management_app/bloc/users.bloc.dart';
 import 'package:flutter_state_management_app/ui/themes/thems.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
 import '../widgets/main.drawer.widget.dart';
 
@@ -67,7 +68,10 @@ class GitUsersPage extends StatelessWidget {
                     children: [
                       Text(state.errorMessage,style: CustomThemes.errorTextStyle,),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          UsersBloc usersBloc=context.read<UsersBloc>();
+                          context.read<UsersBloc>().add(usersBloc.currentEvent);
+                        },
                         child: const Text('Retry'),
                       )
                     ],
@@ -75,31 +79,40 @@ class GitUsersPage extends StatelessWidget {
                 }
                 else if(state is SearchUsersSuccessState){
                   return Expanded(
-                    child: ListView.separated(
-                        itemBuilder: (context,index)=>ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius:35,
-                                    backgroundImage: NetworkImage(state.listUsers.items[index].avatarUrl),
-                                  ),
-                                  const SizedBox(width: 10,),
-                                  Text(state.listUsers.items[index].login, style: Theme.of(context).textTheme.headline6,),
-                                ],
-                              ),
-                              CircleAvatar(child: Text("${state.listUsers.items[index].score}"),)
-                            ],
+                    child: LazyLoadScrollView(
+                      onEndOfPage: (){
+                        context.read<UsersBloc>().add(NextPageEvent(
+                            keyword: state.currentKeyword,
+                            page: state.currentPage+1,
+                            pageSize: state.pageSize
+                        ));
+                      },
+                      child: ListView.separated(
+                          itemBuilder: (context,index)=>ListTile(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius:35,
+                                      backgroundImage: NetworkImage(state.users[index].avatarUrl),
+                                    ),
+                                    const SizedBox(width: 10,),
+                                    Text(state.users[index].login, style: Theme.of(context).textTheme.headline6,),
+                                  ],
+                                ),
+                                CircleAvatar(child: Text("${state.users[index].score}"),)
+                              ],
+                            ),
                           ),
-                        ),
-                        separatorBuilder: (context,index){
-                          return const Divider(
-                            height: 2,
-                          );
-                        },
-                        itemCount: state.listUsers.items.length),
+                          separatorBuilder: (context,index){
+                            return const Divider(
+                              height: 2,
+                            );
+                          },
+                          itemCount: state.users.length),
+                    ),
                   );
                 }
                 else {
