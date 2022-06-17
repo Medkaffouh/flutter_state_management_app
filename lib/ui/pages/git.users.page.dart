@@ -12,7 +12,23 @@ class GitUsersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController textEditingController=TextEditingController();
     return Scaffold(
-      appBar: AppBar(title: const Text("Git Users"),),
+      appBar: AppBar(
+        title: BlocBuilder<UsersBloc,UsersState>(
+          builder: (context,state){
+            if(state is SearchUsersSuccessState){
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Git Users"),
+                  Text("${state.currentPage}/${state.totalPages}"),
+                ],
+              );
+            }else{
+              return const Text("Git Users");
+            }
+          },
+        )
+      ),
       body: Column(
         children: [
           Padding(
@@ -33,7 +49,7 @@ class GitUsersPage extends StatelessWidget {
                 IconButton(
                     onPressed: (){
                       String kw=textEditingController.text;
-                      context.read<UsersBloc>().add(SearchUsersEvent(keyword: kw));
+                      context.read<UsersBloc>().add(SearchUsersEvent(keyword: kw,page: 0,pageSize: 20));
                     },
                     icon: const Icon(Icons.search))
               ],
